@@ -233,7 +233,7 @@ export function CreateTeam() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Role</FormLabel>
+                                <FormLabel>Email</FormLabel>
                                 <FormControl>
                                     <Input placeholder="shadcn" {...field} />
                                 </FormControl>
@@ -246,7 +246,7 @@ export function CreateTeam() {
                         name="number"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Role</FormLabel>
+                                <FormLabel>Number</FormLabel>
                                 <FormControl>
                                     <Input placeholder="shadcn" {...field} />
                                 </FormControl>
@@ -259,7 +259,7 @@ export function CreateTeam() {
                         name="address"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Role</FormLabel>
+                                <FormLabel>Address</FormLabel>
                                 <FormControl>
                                     <Input placeholder="shadcn" {...field} />
                                 </FormControl>
