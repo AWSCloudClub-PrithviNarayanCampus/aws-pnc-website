@@ -9,7 +9,7 @@ export function Hero() {
                     <Cloud className="h-16 w-16 text-orange-500" />
                 </div>
                 <h1 className="text-4xl md:text-6xl font-bold mb-6">AWS Cloud Club</h1>
-                <p className="text-xl text-muted-foreground mb-4">Prithvi Narayan Campus</p>
+                <p className="text-3xl text-muted-foreground mb-4">Prithvi Narayan Campus</p>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
                     Empowering students with cloud computing knowledge and AWS skills. Join us to learn, build, and innovate with
                     cloud technologies.

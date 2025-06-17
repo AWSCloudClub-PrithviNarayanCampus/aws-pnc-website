@@ -1,13 +1,13 @@
+import { getMembers } from "@/lib/actions/team/getMembers";
 import { TeamMember } from "./TeamMember"
 
-const teamMembers = [
-    { name: "Rajesh Sharma", role: "President", image: "/placeholder.svg?height=200&width=200" },
-    { name: "Priya Thapa", role: "Vice President", image: "/placeholder.svg?height=200&width=200" },
-    { name: "Amit Gurung", role: "Technical Lead", image: "/placeholder.svg?height=200&width=200" },
-    { name: "Sita Rai", role: "Event Coordinator", image: "/placeholder.svg?height=200&width=200" },
-]
-
-export function TeamSection() {
+export async function TeamSection() {
+       const response = await getMembers();
+        if (!response.success) {
+            return <div>{response.message}</div>
+        }
+        const teamMembers = response.data as Team[]
+        console.log(teamMembers)
     return (
         <section id="team" className="py-16 px-4 bg-muted/50">
             <div className="container mx-auto">
@@ -19,7 +19,7 @@ export function TeamSection() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {teamMembers.map((member, index) => (
-                        <TeamMember key={index} {...member} />
+                        <TeamMember key={index} teamMember={member} />
                     ))}
                 </div>
             </div>

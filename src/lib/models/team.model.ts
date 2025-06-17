@@ -11,8 +11,14 @@ const TeamSchema = new mongoose.Schema({
     description: {
         type: String,
     },
+    order: {
+        type: String,
+    },
     linkedIn: {
         type: String,
+    },
+    image: {
+        type: [String]
     },
     facebook: {
         type: String,
