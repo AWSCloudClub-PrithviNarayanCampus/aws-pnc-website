@@ -8,7 +8,7 @@ export function ContactForm() {
         <Card>
             <CardHeader>
                 <CardTitle>Send us a Message</CardTitle>
-                <CardDescription>We'll get back to you as soon as possible</CardDescription>
+                <CardDescription>We&apos;ll get back to you as soon as possible</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

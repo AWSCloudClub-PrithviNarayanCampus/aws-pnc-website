@@ -2,7 +2,6 @@
 
 import UserModel from "@/lib/models/user.model";
 import { connectToDb } from "@/lib/utils/connectDB";
-import { revalidatePath } from "next/cache";
 interface CreateAdminProps {
     userData: CreateUser
 }
