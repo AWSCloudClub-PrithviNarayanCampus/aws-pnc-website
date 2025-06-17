@@ -15,7 +15,7 @@ export function TeamMember({
             <Card className="text-center">
                 <CardContent className="pt-6">
                     <Image
-                        src={teamMember.image[0] || "/placeholder.svg"}
+                        src={teamMember.image ? teamMember.image[0] :  "/logo.png"}
                         alt={teamMember.fullname}
                         width={120}
                         height={120}
