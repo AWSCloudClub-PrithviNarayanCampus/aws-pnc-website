@@ -2,6 +2,7 @@
 
 import TeamModel from "@/lib/models/team.model";
 import { connectToDb } from "@/lib/utils/connectDB";
+import { revalidatePath } from "next/cache";
 interface CreateTeamProps {
     teamData: CreateTeamMember
 }
@@ -26,7 +27,9 @@ export const createTeam = async ({
             github: teamData.github,
         })
         if (!createdBlog) return null
-        return { success: true, blogId: createdBlog._id.toString() }
+        revalidatePath("/")
+        revalidatePath("/admin/team")
+        return { success: true, }
     } catch (error) {
         console.log("error occured: ", error);
         console.log(error);
