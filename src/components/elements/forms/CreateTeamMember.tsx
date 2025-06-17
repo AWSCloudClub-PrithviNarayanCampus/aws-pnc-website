@@ -136,11 +136,10 @@ export function CreateTeam() {
     }
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-6 max-w-5xl px-20">
                 <div>
                     <FormLabel className="text-[#1E3A8A] font-medium block mb-2">
-                        Header Images (Max 5 images)
-                        <span className="text-sm text-[#1E3A8A] ml-2">({files.length}/5 images selected)</span>
+                        Profile Image
                     </FormLabel>
                     <div className="border-2 border-dashed border-[#1E3A8A] rounded-lg p-6 text-center bg-[#F9FAFB]">
                         <div className="flex flex-col items-center gap-4">
@@ -163,7 +162,7 @@ export function CreateTeam() {
                                     <span className="text-sm text-[#1E3A8A] font-medium">
                                         {files.length >= 5 ? "Maximum 5 images reached" : "Drag & drop images or click to browse"}
                                     </span>
-                                    <span className="text-xs text-[#1E3A8A] mt-1">Max file size: 5MB each</span>
+                                    <span className="text-xs text-[#1E3A8A] mt-1">Max file size: 5MB</span>
                                 </label>
                             </div>
                         </div>
@@ -193,129 +192,134 @@ export function CreateTeam() {
                         )}
                         <div className="mt-4 flex items-center justify-between">
                             <FormDescription className="text-[#1E3A8A]">
-                                Upload clear photos of the blog page
+                                Upload clear photos of the individual
                             </FormDescription>
 
                         </div>
                     </div>
                 </div>
-                <FormField
-                    control={form.control}
-                    name="fullname"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Full Name</FormLabel>
-                            <FormControl>
-                                <Input placeholder="shadcn" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="role"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Role</FormLabel>
-                            <FormControl>
-                                <Input placeholder="shadcn" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="description"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Description</FormLabel>
-                            <FormControl>
-                                <Input placeholder="shadcn" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="order"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Order</FormLabel>
-                            <FormControl>
-                                <Input placeholder="enter order eg: 1, 2, 3" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="linkedIn"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>LinkedIn</FormLabel>
-                            <FormControl>
-                                <Input placeholder="shadcn" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="facebook"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Facebook</FormLabel>
-                            <FormControl>
-                                <Input placeholder="shadcn" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="instagram"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>instagram</FormLabel>
-                            <FormControl>
-                                <Input placeholder="shadcn" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="twitter"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>twitter</FormLabel>
-                            <FormControl>
-                                <Input placeholder="shadcn" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="github"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>github</FormLabel>
-                            <FormControl>
-                                <Input placeholder="shadcn" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+                <div className="grid grid-cols-3 gap-3">
+                    <FormField
+                        control={form.control}
+                        name="fullname"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Full Name</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="shadcn" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="role"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Role</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="shadcn" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="description"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Description</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="shadcn" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="order"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Order</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="enter order eg: 1, 2, 3" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
+                <h3 className="mb-3 font-bold">Social Links</h3>
+                <div className="grid grid-cols-3 gap-3">
+                    <FormField
+                        control={form.control}
+                        name="linkedIn"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>LinkedIn</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="shadcn" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="facebook"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Facebook</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="shadcn" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="instagram"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>instagram</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="shadcn" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="twitter"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>twitter</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="shadcn" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="github"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>github</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="shadcn" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
                 <Button type="submit">Submit</Button>
             </form>
         </Form>

@@ -18,19 +18,19 @@ export function Header() {
                     </Link>
                 </div>
                 <nav className="flex items-center space-x-6 text-sm font-medium">
-                    <Link href="#team" className="hover:text-foreground/80">
+                    <Link href="/#team" className="hover:text-foreground/80">
                         Team
                     </Link>
-                    <Link href="#gallery" className="hover:text-foreground/80">
+                    <Link href="/#gallery" className="hover:text-foreground/80">
                         Gallery
                     </Link>
-                    <Link href="#events" className="hover:text-foreground/80">
+                    <Link href="/#events" className="hover:text-foreground/80">
                         Events
                     </Link>
                     <Link href="/blogs" className="hover:text-foreground/80">
                         Blogs
                     </Link>
-                    <Link href="#contact" className="hover:text-foreground/80">
+                    <Link href="/#contact" className="hover:text-foreground/80">
                         Contact
                     </Link>
                 </nav>

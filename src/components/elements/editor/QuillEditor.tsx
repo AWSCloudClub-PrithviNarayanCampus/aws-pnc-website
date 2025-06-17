@@ -28,7 +28,7 @@ type QuilEditorProps = {
 
 export default function QuilEditor({
     onChange,
-    initialData = "Write something in here"
+    initialData = ""
 }: QuilEditorProps) {
     const wrapperRef = useRef<HTMLDivElement | null>(null);
     const [quill, setQuill] = useState<any>(null);

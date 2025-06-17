@@ -1,3 +1,4 @@
+import { CustomSidebar } from "@/components/elements/sidebars/CustomSidebar"
 import { getSessionUser } from "@/lib/actions/user/getSessionUser"
 import NextAuthSessionProvider from "@/lib/providers/NextAuthSessionUser"
 import { redirect } from "next/navigation"
@@ -12,11 +13,13 @@ const ApplicationLayout = async ({
     if (user.role == "user") redirect("/dashboard")
     return (
         <NextAuthSessionProvider>
-            <main>
-                <div className="w-full"> 
-                    {children}
-                </div>
-            </main>
+            <div className="flex h-screen bg-gray-50">
+                <CustomSidebar user={user} />
+
+                <main className="flex-1 overflow-auto lg:ml-0">
+                    <div className="pt-16 lg:pt-0 min-h-full">{children}</div>
+                </main>
+            </div>
         </NextAuthSessionProvider >
     )
 }

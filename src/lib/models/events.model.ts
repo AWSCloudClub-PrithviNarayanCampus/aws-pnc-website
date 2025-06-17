@@ -8,6 +8,12 @@ const EventSchema = new Schema({
     eventDescription: {
         type: String,
     },
+    deliverables: {
+        type: String,
+    },
+    eventDate: {
+        type: String
+    },
     guest: {
         type: String,
     },

@@ -125,7 +125,7 @@ export function CreateBlog({
             form.reset()
             setFiles([])
             setPreviewUrls([])
-            toast.success("Book Listed successfully!..")
+            toast.success("Blog Created successfully!..")
         }
         if (response?.success) {
             router.push(`/admin/blog/${response.blogId}`)
@@ -133,13 +133,12 @@ export function CreateBlog({
     }
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-5xl flex flex-col gap-5 px-20 py-6">
                 <div>
                     <FormLabel className="text-[#1E3A8A] font-medium block mb-2">
-                        Header Images (Max 5 images)
-                        <span className="text-sm text-[#1E3A8A] ml-2">({files.length}/5 images selected)</span>
+                        Header Image
                     </FormLabel>
-                    <div className="border-2 border-dashed border-[#1E3A8A] rounded-lg p-6 text-center bg-[#F9FAFB]">
+                    <div className="border-2 border-dashed border-blue-600 rounded-lg p-6 text-center bg-[#F9FAFB] w-full">
                         <div className="flex flex-col items-center gap-4">
                             <div className="flex items-center gap-2">
                                 <Input
@@ -201,7 +200,7 @@ export function CreateBlog({
                     name="title"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Course Title</FormLabel>
+                            <FormLabel>Blog Title</FormLabel>
                             <FormControl>
                                 <Input placeholder="shadcn" {...field} />
                             </FormControl>
@@ -214,7 +213,7 @@ export function CreateBlog({
                     name="meta_description"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Course Description</FormLabel>
+                            <FormLabel>Blog Description</FormLabel>
                             <FormControl>
                                 <Input placeholder="shadcn" {...field} />
                             </FormControl>
@@ -240,7 +239,7 @@ export function CreateBlog({
                     name="category"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Course Type</FormLabel>
+                            <FormLabel>Content Category</FormLabel>
                             <FormControl>
                                 <Select onValueChange={field.onChange} value={field.value}>
                                     <SelectTrigger>
@@ -266,7 +265,7 @@ export function CreateBlog({
                         </FormItem>
                     )}
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit" className="w-fit">Submit</Button>
             </form>
         </Form>
     )
