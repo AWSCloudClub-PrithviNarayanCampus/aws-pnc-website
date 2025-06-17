@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -27,9 +27,9 @@ export function Hero() {
                 </p>
                 <div className="flex gap-4 justify-center">
                     <Link href={"/#contact"} className={buttonVariants({ variant: "default", size: "lg" })}>Join Our Club</Link>
-                    <Button variant="outline" size="lg">
+                    <Link href={"/blogs"} className={buttonVariants({ variant: "outline", size: "lg" })}>
                         Learn More
-                    </Button>
+                    </Link>
                 </div>
             </div>
         </section>

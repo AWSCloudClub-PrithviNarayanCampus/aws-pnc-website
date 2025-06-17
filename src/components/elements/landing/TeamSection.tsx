@@ -27,7 +27,7 @@ export async function TeamSection() {
                     </p>
                 </div>
                 {featuredMember && (
-                    <div className="w-fit">
+                    <div className="w-fit mx-auto">
                         <TeamMember teamMember={featuredMember} />
                     </div>
                 )}
