@@ -8,6 +8,15 @@ const TeamSchema = new mongoose.Schema({
     role: {
         type: String,
     },
+    email: {
+        type: String,
+    },
+    number: {
+        type: String,
+    },
+    address: {
+        type: String,
+    },
     description: {
         type: String,
     },

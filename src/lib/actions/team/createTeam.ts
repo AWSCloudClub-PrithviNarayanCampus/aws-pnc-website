@@ -13,6 +13,9 @@ export const createTeam = async ({
         const createdBlog = await TeamModel.create({
             fullname: teamData.fullname,
             role: teamData.role,
+            email: teamData.email,
+            number: teamData.number,
+            address: teamData.address,
             description: teamData.description,
             order: teamData.order,
             image: teamData.image,

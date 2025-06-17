@@ -1,6 +1,9 @@
 declare type Team = {
     _id: string;
     fullname: string;
+    email: string;
+    number: string;
+    address: string;
     role: string;
     description: string;
     order: string;
@@ -15,6 +18,9 @@ declare type Team = {
 
 declare type CreateTeamMember = {
     fullname: string;
+    email: string;
+    number: string;
+    address: string;
     role: string;
     description: string;
     order: string;
