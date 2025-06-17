@@ -12,7 +12,7 @@ export default function NotFound() {
                 <div className="space-y-2">
                     <h1 className="text-4xl font-bold tracking-tight">Blog Post Not Found</h1>
                     <p className="text-lg text-muted-foreground max-w-md mx-auto">
-                        The blog post you're looking for doesn't exist or hasn't been published yet.
+                        The blog post you&apos;re looking for doesn&apos;t exist or hasn&apos;t been published yet.
                     </p>
                 </div>
                 <Button asChild>

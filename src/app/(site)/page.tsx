@@ -1,6 +1,5 @@
 import { ContactSection } from "@/components/elements/contact/ContactSection";
 import { EventsSection } from "@/components/elements/landing/EventsSection";
-import { GallerySection } from "@/components/elements/landing/GallarySection";
 import { Hero } from "@/components/elements/landing/Hero";
 import { TeamSection } from "@/components/elements/landing/TeamSection";
 
