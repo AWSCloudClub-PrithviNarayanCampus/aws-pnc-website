@@ -1,8 +1,10 @@
 "use server"
 
 import BlogModel from "@/lib/models/blog.model";
+import { connectToDb } from "@/lib/utils/connectDB";
 
 export const getBlog = async (blogId: string) => {
+    await connectToDb()
     try {
         const blogData = await BlogModel.findOne({ _id: blogId });
         if (!blogData) {
