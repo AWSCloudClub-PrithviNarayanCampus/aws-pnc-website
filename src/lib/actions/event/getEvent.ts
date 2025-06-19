@@ -26,6 +26,6 @@ export const getEvent = async (eventId: string) => {
         };
     } catch (error) {
         console.error("Error fetching user data:", error);
-        return { message: "something went wrong" };
+        return { message: "something went wrong", error };
     }
 }
