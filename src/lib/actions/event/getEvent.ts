@@ -4,7 +4,7 @@ import EventModel from "@/lib/models/events.model";
 
 export const getEvent = async (eventId: string) => {
     try {
-        const eventData = await EventModel.findOne({ _id: eventId });
+        const eventData = await EventModel.findById({ _id: eventId });
         if (!eventData) {
             return { message: "404" };
         }

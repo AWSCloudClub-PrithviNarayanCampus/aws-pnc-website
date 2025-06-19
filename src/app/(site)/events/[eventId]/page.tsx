@@ -22,7 +22,7 @@ export default async function EventDetailPage({
 }: {
     params: Promise<{ eventId: string }>
 }) {
-    const { eventId } = await params
+    const { eventId } = await params;
     console.log(eventId)
     const response = await getEvent(eventId)
     if (!response.success) return <div>{response.message}</div>
