@@ -151,7 +151,7 @@ export default async function EventDetailPage({
                     </CardContent>
                 </Card>
 
-                <div className="flex flex-col sm:flex-row gap-4">
+                {/* <div className="flex flex-col sm:flex-row gap-4">
                     {event.eventType.toLowerCase() === "upcomming" || event.eventType.toLowerCase() === "upcoming" ? (
                         <>
                             <Button size="lg" className="flex-1">
@@ -175,7 +175,7 @@ export default async function EventDetailPage({
                             Learn More
                         </Button>
                     )}
-                </div>
+                </div> */}
             </div>
         </div>
     )
