@@ -28,7 +28,7 @@ export function TeamMember({
                         teamMember.linkedIn && (
                             <Button variant="ghost" size="sm">
                                 <Link href={`${teamMember.linkedIn}`}>
-                                    <Linkedin />
+                                    <Linkedin className="text-[#545B64]"/>
                                 </Link>
                             </Button>
                         )
@@ -37,7 +37,7 @@ export function TeamMember({
                         teamMember.instagram && (
                             <Button variant="ghost" size="sm">
                                 <Link href={`${teamMember.instagram}`}>
-                                    <Instagram />
+                                    <Instagram className="text-[#545B64]"/>
                                 </Link>
                             </Button>
                         )
@@ -46,7 +46,7 @@ export function TeamMember({
                         teamMember.facebook && (
                             <Button variant="ghost" size="sm">
                                 <Link href={`${teamMember.facebook}`}>
-                                    <Facebook />
+                                    <Facebook className="text-[#545B64]"/>
                                 </Link>
                             </Button>
                         )
@@ -55,7 +55,7 @@ export function TeamMember({
                         teamMember.twitter && (
                             <Button variant="ghost" size="sm">
                                 <Link href={`${teamMember.twitter}`}>
-                                    <Twitter />
+                                    <Twitter className="text-[#545B64]"/>
                                 </Link>
                             </Button>
                         )
@@ -64,7 +64,7 @@ export function TeamMember({
                         teamMember.github && (
                             <Button variant="ghost" size="sm">
                                 <Link href={`${teamMember.github}`}>
-                                    <Github />
+                                    <Github className="text-[#545B64]"/>
                                 </Link>
                             </Button>
                         )

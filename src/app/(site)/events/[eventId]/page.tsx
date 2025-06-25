@@ -79,7 +79,7 @@ export default async function EventDetailPage({
                                 <Clock className="h-3 w-3 mr-1" />
                                 {event.eventType.charAt(0).toUpperCase() + event.eventType.slice(1)}
                             </Badge>
-                            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">{event.eventTitle}</h1>
+                            <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-3 text-[#0073BB]">{event.eventTitle}</h1>
                             <p className="text-lg text-muted-foreground leading-relaxed">{event.eventDescription}</p>
                         </div>
                         {/* <Button variant="outline" size="sm">

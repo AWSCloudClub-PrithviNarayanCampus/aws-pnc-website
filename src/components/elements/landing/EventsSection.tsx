@@ -13,7 +13,7 @@ export async function EventsSection() {
         <section id="events" className="py-16 px-4 bg-muted/50">
             <div className="container mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold mb-4">Events</h2>
+                    <h2 className="text-3xl font-bold mb-4 text-[#0073BB]">Events</h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto">Stay updated with our latest and upcoming events</p>
                 </div>
 

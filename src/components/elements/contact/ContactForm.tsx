@@ -80,7 +80,7 @@ export function ContactForm() {
                         onChange={(e) => setMessage(e.target.value)}
                     />
                 </div>
-                <Button type="button" onClick={handleSubmit} className="w-full">Send Message</Button>
+                <Button type="button" onClick={handleSubmit} className="w-full bg-[#0073BB]">Send Message</Button>
             </CardContent>
         </Card>
     )

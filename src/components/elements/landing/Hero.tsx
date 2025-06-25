@@ -1,4 +1,5 @@
 import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -19,14 +20,14 @@ export function Hero() {
                         </Link>
                     </div>
                 </div>
-                <h1 className="text-4xl md:text-6xl font-bold mb-6">AWS Cloud Club</h1>
+                <h1 className="text-4xl md:text-6xl font-bold mb-6 text-[#0073BB]">AWS Cloud Club</h1>
                 <p className="text-3xl text-muted-foreground mb-4">Prithvi Narayan Campus</p>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
                     Empowering students with cloud computing knowledge and AWS skills. Join us to learn, build, and innovate with
-                    cloud technologies.
+                    <span className="text-[#0073BB]"> cloud technologies.</span>
                 </p>
                 <div className="flex gap-4 justify-center">
-                    <Link href={"/#contact"} className={buttonVariants({ variant: "default", size: "lg" })}>Join Our Club</Link>
+                    <Link href={"/#contact"} className={cn(buttonVariants({ variant: "default", size: "lg" }), "bg-[#0073BB]")}>Join Our Club</Link>
                     <Link href={"/blogs"} className={buttonVariants({ variant: "outline", size: "lg" })}>
                         Learn More
                     </Link>

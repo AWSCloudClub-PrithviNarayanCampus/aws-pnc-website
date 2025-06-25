@@ -21,7 +21,7 @@ export async function TeamSection() {
         <section id="team" className="py-16 px-4 bg-muted/50">
             <div className="container mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl font-bold mb-4">Our Team</h2>
+                    <h2 className="text-3xl font-bold mb-4 text-[#0073BB]">Our Team</h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto">
                         Meet the passionate individuals leading our AWS Cloud Club
                     </p>
@@ -34,7 +34,7 @@ export async function TeamSection() {
 
                 {secondRowMembers.length > 0 && (
                     <div className="mb-12 px-20">
-                        <h2 className="text-2xl font-bold tracking-tight mt-8 mb-8 text-center">Core Team</h2>
+                        <h2 className="text-2xl font-bold tracking-tight mt-8 mb-8 text-center text-[#0073BB]">Core Team</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                             {secondRowMembers.map((member, index) => (
                                 <TeamMember key={index} teamMember={member}  />
@@ -45,7 +45,7 @@ export async function TeamSection() {
 
                 {remainingMembers.length > 0 && (
                     <div>
-                        <h2 className="text-2xl font-bold tracking-tight mb-8 text-center">Executive Team</h2>
+                        <h2 className="text-2xl font-bold tracking-tight mb-8 text-center text-[#0073BB]">Executive Team</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                             {remainingMembers.map((member, index) => (
                                 <TeamMember key={index} teamMember={member}  />

@@ -29,20 +29,20 @@ export function ContactInfo() {
                     <Link
                         href="https://www.facebook.com/profile.php?id=61576565671254"
                         className={buttonVariants({ variant: "outline" })}>
-                        <Facebook className="h-4 w-4 mr-2" />
-                        Facebook
+                        <Facebook className="h-4 w-4 mr-2 text-[#0073BB]" />
+                        <span className="text-[#0073BB]">Facebook</span>
                     </Link>
                     <Link
                         href="https://www.linkedin.com/company/aws-cloud-club-prithvi-narayan-campus/"
                         className={buttonVariants({ variant: "outline" })}>
-                        <Linkedin className="h-4 w-4 mr-2" />
-                        LinkedIn
+                        <Linkedin className="h-4 w-4 mr-2 text-[#0073BB]" />
+                        <span className="text-[#0073BB]">LinkedIn</span>
                     </Link>
                     <Link
                         href="https://github.com/AWSCloudClub-PrithviNarayanCampus/"
                         className={buttonVariants({ variant: "outline" })}>
-                        <Github className="h-4 w-4 mr-2" />
-                        Github
+                        <Github className="h-4 w-4 mr-2 text-[#0073BB]" />
+                        <span className="text-[#0073BB]">Github</span>
                     </Link>
                 </div>
             </div>
