@@ -16,6 +16,20 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { getEvent } from "@/lib/actions/event/getEvent"
+import { getEvents } from "@/lib/actions/event/getEvents"
+
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+    const { data } = await getEvents()
+
+    return (
+        data
+            ?.map(({ eventId }) => ({ eventId }))
+            .slice(0, 100)
+        ?? []
+    );
+}
 
 export default async function EventDetailPage({
     params,

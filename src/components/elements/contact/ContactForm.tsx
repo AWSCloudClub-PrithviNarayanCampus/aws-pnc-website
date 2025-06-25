@@ -1,9 +1,43 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+"use client"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle
+} from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { useState } from "react"
+import toast from "react-hot-toast"
+import { createContact } from "@/lib/actions/contact/createContact"
 
 export function ContactForm() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [subject, setSubject] = useState("");
+    const [message, setMessage] = useState("");
+
+    const handleSubmit = async () => {
+        const messageData = {
+            name: name,
+            email: email,
+            subject: subject,
+            message: message
+        }
+        console.log(messageData)
+        const response = await createContact({ contactData: messageData })
+        if (response?.success) {
+            setName("")
+            setEmail("")
+            setSubject("")
+            setMessage("")
+            toast.success("Thank you for your Message. We will get back to yo soon!")
+        } else {
+            toast.error("Something went wrong. Make sure to fill in all fields!")
+        }
+    }
     return (
         <Card>
             <CardHeader>
@@ -14,22 +48,39 @@ export function ContactForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label className="text-sm font-medium mb-2 block">Name</label>
-                        <Input placeholder="Your name" />
+                        <Input
+                            value={name}
+                            placeholder="Your name"
+                            onChange={(e) => setName(e.target.value)}
+                        />
                     </div>
                     <div>
                         <label className="text-sm font-medium mb-2 block">Email</label>
-                        <Input type="email" placeholder="your.email@example.com" />
+                        <Input
+                            value={email}
+                            type="email"
+                            placeholder="your.email@example.com"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
                 </div>
                 <div>
                     <label className="text-sm font-medium mb-2 block">Subject</label>
-                    <Input placeholder="What's this about?" />
+                    <Input
+                        value={subject}
+                        placeholder="What's this about?"
+                        onChange={(e) => setSubject(e.target.value)}
+                    />
                 </div>
                 <div>
                     <label className="text-sm font-medium mb-2 block">Message</label>
-                    <Textarea placeholder="Your message..." rows={4} />
+                    <Textarea
+                        value={message}
+                        placeholder="Your message..." rows={4}
+                        onChange={(e) => setMessage(e.target.value)}
+                    />
                 </div>
-                <Button className="w-full">Send Message</Button>
+                <Button type="button" onClick={handleSubmit} className="w-full">Send Message</Button>
             </CardContent>
         </Card>
     )

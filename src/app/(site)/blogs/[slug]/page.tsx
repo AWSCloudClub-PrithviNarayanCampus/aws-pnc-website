@@ -6,6 +6,21 @@ import { getBlogBySlug } from "@/lib/actions/blog/getBlogBySlug"
 import Link from "next/link"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { getPublishedBlogs } from "@/lib/actions/blog/getPublishedBlogs"
+
+
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+    const { data } = await getPublishedBlogs()
+
+    return (
+        data
+            ?.map(({ slug }) => ({ slug }))
+            .slice(0, 100)
+        ?? []
+    );
+}
 
 export default async function BlogPostPage({
     params,

@@ -15,8 +15,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AWS Cloud Club Prithvi Narayan Campus",
+  title: {
+    default: "AWS Cloud Club Prithvi Narayan Campus",
+    template: "%s - AWS Cloud Club Prithvi Narayan Campus"
+  },
   description: "A Club Dedicated to Provide Knowledge on Cloud Computing!",
+  keywords: [
+    "AWS Cloud Club",
+    "AWS Cloud Club Pokhara",
+    "Prithvi Narayan Camplus",
+  ],
+  authors: [{ name: "AWS Cloud Club Prithvi Narayan Campus" }],
+  openGraph: {
+    title: "AWS Cloud Club Prithvi Narayan Campus",
+    description: "Your contribution to a better future!",
+    url: "https://awscloudclubpnc.vercel.app/",
+    siteName: "AWS Cloud Club Prithvi Narayan Campus",
+    images: [
+      {
+        url: "./opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AWS Cloud Club Prithvi Narayan Campus",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +54,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <QueryProvider>
-        {children}
+          {children}
         </QueryProvider>
         <Toaster />
       </body>
