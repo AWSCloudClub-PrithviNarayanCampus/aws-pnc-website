@@ -8,7 +8,6 @@ import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { getPublishedBlogs } from "@/lib/actions/blog/getPublishedBlogs"
 
-
 export const revalidate = 60;
 
 export async function generateStaticParams() {

@@ -1,5 +1,6 @@
 import { getEvents } from "@/lib/actions/event/getEvents"
 import { EventCard } from "./EventCard"
+import Link from "next/link";
 
 export async function EventsSection() {
     const response = await getEvents();
@@ -20,7 +21,7 @@ export async function EventsSection() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
                         <h3 className="text-2xl font-semibold mb-6">Recent Events</h3>
-                        <div className="space-y-4">
+                        <div className="space-y-4 flex flex-col gap-2">
                             {recentEvents.map((event) => (
                                 <EventCard
                                     eventId={event.eventId}
@@ -37,7 +38,7 @@ export async function EventsSection() {
 
                     <div>
                         <h3 className="text-2xl font-semibold mb-6">Upcoming Events</h3>
-                        <div className="space-y-4">
+                        <div className="space-y-4 flex flex-col gap-2">
                             {upcomingEvents.map((event) => (
                                 <EventCard
                                     eventId={event.eventId}
@@ -49,6 +50,18 @@ export async function EventsSection() {
                                     isUpcoming={false}
                                 />
                             ))}
+                        </div>
+                        <div>
+                            <h3>
+                                We have got exciting events coming up!
+                            </h3>
+                           <Link 
+                           href={"https://www.meetup.com/aws-cloud-club-at-prithvi-narayan-campus/"}
+                           className="underline text-[#135172]"
+                           >
+                            Join our Meetup group
+                           </Link>
+                           <span> to get notified as soon as they are live. Don&apos;t miss out</span>
                         </div>
                     </div>
                 </div>

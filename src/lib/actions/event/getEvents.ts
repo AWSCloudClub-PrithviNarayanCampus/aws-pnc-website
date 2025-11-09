@@ -22,6 +22,8 @@ export const getEvents = async () => {
             guest: event.guest,
             guestProfile: event.guestProfile,
             venue: event.venue,
+            eventLink: event.eventLink,
+            rsvpLink: event.rsvpLink,
             createdAt: event.createdAt.toString().slice(0, 10)
         }));
 

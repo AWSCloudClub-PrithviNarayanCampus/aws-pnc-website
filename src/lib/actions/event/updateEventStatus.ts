@@ -2,6 +2,7 @@
 
 import EventModel from "@/lib/models/events.model"
 import { connectToDb } from "@/lib/utils/connectDB"
+import { revalidatePath } from "next/cache"
 
 interface UpdateEventStatusProps {
     updateBlogData: {
@@ -11,7 +12,7 @@ interface UpdateEventStatusProps {
 }
 
 export const updateEventStatus = async ({
-   updateBlogData
+    updateBlogData
 }: UpdateEventStatusProps) => {
     await connectToDb()
     try {
@@ -23,6 +24,7 @@ export const updateEventStatus = async ({
             new: true,
         }
         )
+        revalidatePath("/")
         return { status: "200 0k!" }
     } catch (error) {
         console.log(error)

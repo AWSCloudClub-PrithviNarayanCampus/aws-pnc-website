@@ -2,6 +2,7 @@
 
 import BlogModel from "@/lib/models/blog.model"
 import { connectToDb } from "@/lib/utils/connectDB"
+import { revalidatePath } from "next/cache"
 
 
 interface UpdateBlogDataProps {
@@ -25,6 +26,7 @@ export const updateBlog = async ({
             new: true,
         }
         )
+        revalidatePath("/blogs")
         return { status: "200 0k!" }
     } catch (error) {
         console.log(error)

@@ -12,7 +12,7 @@ export function ContactSection() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-[100px]">
                     <ContactInfo />
                     <ContactForm />
                 </div>

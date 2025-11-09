@@ -32,9 +32,11 @@ export function CreateEventForm() {
             eventDescription: "",
             eventType: "",
             eventDate: "",
-            guest: "",
-            guestProfile: "",
+            guest: [''],
+            guestProfile: [''],
             venue: "",
+            eventLink: "",
+            rsvpLink: '',
         },
     })
 
@@ -48,7 +50,9 @@ export function CreateEventForm() {
             deliverables: editorContent,
             guest: values.guest,
             guestProfile: values.guestProfile,
-            venue: values.venue
+            venue: values.venue,
+            eventLink: values.eventLink,
+            rsvpLink: values.rsvpLink,
         }
 
         const response = await createEvent({ eventData })
@@ -157,6 +161,32 @@ export function CreateEventForm() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Venue</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="shadcn" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="eventLink"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Event Link</FormLabel>
+                                    <FormControl>
+                                        <Input placeholder="shadcn" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="rsvpLink"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Rsvp Link</FormLabel>
                                     <FormControl>
                                         <Input placeholder="shadcn" {...field} />
                                     </FormControl>

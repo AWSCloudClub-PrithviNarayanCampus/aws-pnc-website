@@ -6,7 +6,7 @@ const SiteLayout = ({
     children
 }: { children: React.ReactNode }) => {
     return (
-        <div>
+        <div className='overflow-x-hidden'>
             <Header />
             {children}
             <Footer />

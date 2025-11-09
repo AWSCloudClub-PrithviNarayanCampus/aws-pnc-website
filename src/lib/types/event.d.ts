@@ -4,9 +4,11 @@ declare type CreateEvent = {
     eventType: string;
     eventDate: string;
     deliverables: string;
-    guest: string;
-    guestProfile: string;
+    guest: string[];
+    guestProfile: string[];
     venue: string;
+    eventLink: string;
+    rsvpLink: string;
 }
 
 declare type Event = {
@@ -16,8 +18,10 @@ declare type Event = {
     eventType: string;
     eventDate: string;
     deliverables: string;
-    guest: string;
-    guestProfile: string;
+    guest: string[];
+    guestProfile: string[];
     venue: string;
+    eventLink: string;
+    rsvpLink: string;
     createdAt: string;
 }

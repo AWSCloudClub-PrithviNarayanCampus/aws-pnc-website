@@ -4,6 +4,7 @@ import "./globals.css";
 import QueryProvider from "@/lib/providers/QueryProvider";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next"
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +26,13 @@ export const metadata: Metadata = {
     "AWS Cloud Club",
     "AWS Cloud Club Pokhara",
     "Prithvi Narayan Camplus",
+    "aws cloud club",
+    "awscloudclubpnc",
+    "cloud computing",
+    'aws cloud',
+    "prithvi narayan campus",
+    "prithvi narayan campus clubs",
+    "bsc csit",
   ],
   authors: [{ name: "AWS Cloud Club Prithvi Narayan Campus" }],
   openGraph: {
@@ -57,6 +65,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <GoogleAnalytics />
         <QueryProvider>
           {children}
         </QueryProvider>

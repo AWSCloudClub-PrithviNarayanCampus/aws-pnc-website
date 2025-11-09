@@ -20,6 +20,8 @@ export const getEvent = async (eventId: string) => {
             guest: eventData.guest,
             guestProfile: eventData.guestProfile,
             venue: eventData.venue,
+            eventLink: eventData.eventLink,
+            rsvpLink: eventData.rsvpLink,
             createdAt: new Date(eventData.createdAt).toISOString(),
         };
         return {

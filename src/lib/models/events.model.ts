@@ -15,16 +15,22 @@ const EventSchema = new Schema({
         type: String
     },
     guest: {
-        type: String,
+        type: [String],
     },
     guestProfile: {
-        type: String,
+        type: [String],
     },
     eventType: {
         type: String,
         enum: ["upcomming", "completed"]
     },
     venue: {
+        type: String,
+    },
+    eventLink: {
+        type: String,
+    },
+    rsvpLink: {
         type: String,
     },
     createdAt: {

@@ -2,6 +2,7 @@
 
 import EventModel from "@/lib/models/events.model";
 import { connectToDb } from "@/lib/utils/connectDB";
+import { revalidatePath } from "next/cache";
 interface CreateEventProps {
     eventData: CreateEvent
 }
@@ -19,8 +20,11 @@ export const createEvent = async ({
             guest: eventData.guest,
             guestProfile: eventData.guestProfile,
             venue: eventData.venue,
+            eventLink: eventData.eventLink,
+            rsvpLink: eventData.rsvpLink,
         })
         if (!createdEvent) return null
+        revalidatePath("/")
         return { success: true, blogId: createdEvent._id.toString() }
     } catch (error) {
         console.log("error occured: ", error);

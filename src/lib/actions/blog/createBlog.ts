@@ -2,6 +2,7 @@
 
 import BlogModel from "@/lib/models/blog.model";
 import { connectToDb } from "@/lib/utils/connectDB";
+import { revalidatePath } from "next/cache";
 interface CreateBlogProps {
     blogData: CreateBlog
 }
@@ -19,6 +20,7 @@ export const createBlog = async ({
             headerImageUrl: blogData.headerImageUrl,
             textContent: "",
         })
+        revalidatePath("/blogs");
         if (!createdBlog) return null
         return { success: true, blogId: createdBlog._id.toString() }
     } catch (error) {

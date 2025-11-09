@@ -7,8 +7,9 @@ export const EventFormSchema = z.object({
   eventDescription: z.string(),
   eventType: z.string(),
   eventDate: z.string(),
-  guest: z.string(),
-  guestProfile: z.string(),
+  guest: z.array(z.string()),
+  guestProfile: z.array(z.string()),
   venue: z.string(),
-  
+  eventLink: z.string(),
+  rsvpLink: z.string()
 })

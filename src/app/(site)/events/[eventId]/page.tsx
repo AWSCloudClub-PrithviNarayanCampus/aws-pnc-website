@@ -10,13 +10,12 @@ import {
     ArrowLeft,
     Calendar,
     MapPin,
-    User,
-    ExternalLink,
     Clock,
 } from "lucide-react"
 import Link from "next/link"
 import { getEvent } from "@/lib/actions/event/getEvent"
 import { getEvents } from "@/lib/actions/event/getEvents"
+import GuestSpeakerCard from "@/components/elements/event/GuestSpeakerCard"
 
 export const revalidate = 60;
 
@@ -59,7 +58,6 @@ export default async function EventDetailPage({
                 return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
         }
     }
-
     return (
         <div className="min-h-screen bg-background">
             <div className="max-w-4xl mx-auto px-4 py-8 md:px-6 md:py-12">
@@ -89,61 +87,53 @@ export default async function EventDetailPage({
                     </div>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-3 mb-8">
-                    <Card>
-                        <CardHeader className="pb-3">
-                            <div className="flex items-center gap-2">
-                                <User className="h-5 w-5 text-primary" />
-                                <h3 className="font-semibold">Guest Speaker</h3>
-                            </div>
-                        </CardHeader>
-                        <CardContent>
-                            {event.guestProfile ? (
-                                <Link
-                                    href={event.guestProfile}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-primary hover:underline flex items-center gap-2"
-                                >
-                                    <span className="font-medium">{event.guest}</span>
-                                    <ExternalLink className="h-4 w-4" />
-                                </Link>
-                            ) : (
-                                <span className="font-medium">{event.guest}</span>
-                            )}
-                        </CardContent>
-                    </Card>
+                <div className="grid gap-6 md:grid-cols-4 mb-8">
+                    <div className="col-span-4">
+                        {
+                            event.guest && event.guestProfile && (
+                                <GuestSpeakerCard
+                                    event={{
+                                        guest: event.guest,
+                                        guestProfile: event.guestProfile,
+                                    }}
+                                />
+                            )
 
-                    <Card>
-                        <CardHeader className="pb-3">
-                            <div className="flex items-center gap-2">
-                                <MapPin className="h-5 w-5 text-primary" />
-                                <h3 className="font-semibold">Venue</h3>
-                            </div>
-                        </CardHeader>
-                        <CardContent>
-                            <span className="font-medium capitalize">{event.venue}</span>
-                        </CardContent>
-                    </Card>
-
-                    <Card>
-                        <CardHeader className="pb-3">
-                            <div className="flex items-center gap-2">
-                                <Calendar className="h-5 w-5 text-primary" />
-                                <h3 className="font-semibold">Scheduled For</h3>
-                            </div>
-                        </CardHeader>
-                        <CardContent>
-                            <span className="font-medium">{event.eventDate}</span>
-                        </CardContent>
-                    </Card>
+                        }
+                    </div>
+                    <div className="col-span-2">
+                        <Card>
+                            <CardHeader className="pb-3 ">
+                                <div className="flex items-center gap-2">
+                                    <MapPin className="h-5 w-5 text-primary" />
+                                    <h3 className="font-semibold">Venue</h3>
+                                </div>
+                            </CardHeader>
+                            <CardContent>
+                                <span className="font-medium capitalize">{event.venue}</span>
+                            </CardContent>
+                        </Card>
+                    </div>
+                    <div className="col-span-2">
+                        <Card>
+                            <CardHeader className="pb-3">
+                                <div className="flex items-center gap-2">
+                                    <Calendar className="h-5 w-5 text-primary" />
+                                    <h3 className="font-semibold">Scheduled For</h3>
+                                </div>
+                            </CardHeader>
+                            <CardContent>
+                                <span className="font-medium">{event.eventDate}</span>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
 
                 <Card className="mb-8">
                     <CardHeader>
                         <h2 className="text-2xl font-semibold">Event Details</h2>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="overflow-hidden">
                         <div
                             className="prose prose-gray max-w-none dark:prose-invert prose-lg prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline"
                             dangerouslySetInnerHTML={{ __html: event.deliverables }}
@@ -151,31 +141,46 @@ export default async function EventDetailPage({
                     </CardContent>
                 </Card>
 
-                {/* <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-4">
                     {event.eventType.toLowerCase() === "upcomming" || event.eventType.toLowerCase() === "upcoming" ? (
                         <>
-                            <Button size="lg" className="flex-1">
-                                Register for Event
-                            </Button>
-                            <Button size="lg" variant="outline">
-                                Add to Calendar
-                            </Button>
+                            <Link href={event.eventLink}>
+                                <Button size="lg" className="flex-1">
+                                    Register for Event
+                                </Button>
+                            </Link>
+                            <Link href={event.eventLink}>
+                                <Button size="lg" className="flex-1">
+                                    Complete RSVP
+                                </Button>
+                            </Link>
+                            <Link href={"https://www.meetup.com/aws-cloud-club-at-prithvi-narayan-campus/"}>
+                                <Button size="lg" className="flex-1">
+                                    Join our Meetup Group
+                                </Button>
+                            </Link>
                         </>
                     ) : event.eventType.toLowerCase() === "completed" ? (
-                        <>
-                            <Button size="lg" variant="outline" className="flex-1">
-                                View Recording
-                            </Button>
-                            <Button size="lg" variant="outline">
-                                Download Resources
-                            </Button>
-                        </>
+                        <div className="flex gap-5">
+                            <Link href={"/gallery"}>
+                                <Button size="lg" className="flex-1">
+                                    View Recordings
+                                </Button>
+                            </Link>
+                            <Link href={"https://www.meetup.com/aws-cloud-club-at-prithvi-narayan-campus/"}>
+                                <Button size="lg" className="flex-1">
+                                    Join our Meetup Group
+                                </Button>
+                            </Link>
+                        </div>
                     ) : (
-                        <Button size="lg" className="flex-1">
-                            Learn More
-                        </Button>
+                        <Link href={"/"}>
+                            <Button size="lg" className="flex-1">
+                                Learn More
+                            </Button>
+                        </Link>
                     )}
-                </div> */}
+                </div>
             </div>
         </div>
     )

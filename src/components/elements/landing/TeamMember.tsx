@@ -1,6 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Facebook, Github, Instagram, Linkedin, Twitter } from "lucide-react"
+import {
+    Facebook,
+    Github,
+    Instagram,
+    Linkedin,
+    Twitter
+} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -28,7 +34,7 @@ export function TeamMember({
                         teamMember.linkedIn && (
                             <Button variant="ghost" size="sm">
                                 <Link href={`${teamMember.linkedIn}`}>
-                                    <Linkedin className="text-[#545B64]"/>
+                                    <Linkedin className="text-[#545B64]" />
                                 </Link>
                             </Button>
                         )
@@ -37,7 +43,7 @@ export function TeamMember({
                         teamMember.instagram && (
                             <Button variant="ghost" size="sm">
                                 <Link href={`${teamMember.instagram}`}>
-                                    <Instagram className="text-[#545B64]"/>
+                                    <Instagram className="text-[#545B64]" />
                                 </Link>
                             </Button>
                         )
@@ -46,7 +52,7 @@ export function TeamMember({
                         teamMember.facebook && (
                             <Button variant="ghost" size="sm">
                                 <Link href={`${teamMember.facebook}`}>
-                                    <Facebook className="text-[#545B64]"/>
+                                    <Facebook className="text-[#545B64]" />
                                 </Link>
                             </Button>
                         )
@@ -55,7 +61,7 @@ export function TeamMember({
                         teamMember.twitter && (
                             <Button variant="ghost" size="sm">
                                 <Link href={`${teamMember.twitter}`}>
-                                    <Twitter className="text-[#545B64]"/>
+                                    <Twitter className="text-[#545B64]" />
                                 </Link>
                             </Button>
                         )
@@ -64,7 +70,7 @@ export function TeamMember({
                         teamMember.github && (
                             <Button variant="ghost" size="sm">
                                 <Link href={`${teamMember.github}`}>
-                                    <Github className="text-[#545B64]"/>
+                                    <Github className="text-[#545B64]" />
                                 </Link>
                             </Button>
                         )
