@@ -10,6 +10,9 @@ export default function Component() {
             <TeamSection />
             <EventsSection />
             <ContactSection />
+            {
+                //helloworld
+            }
         </div>
     )
 }
