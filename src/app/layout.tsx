@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: "AWS Cloud Club Prithvi Narayan Campus",
     template: "%s - AWS Cloud Club Prithvi Narayan Campus"
   },
-  description: "A Club Dedicated to Provide Knowledge on Cloud Computing!",
+  description: "A Club Dedicated to Provide Knowledge on Cloud Computing! 2083",
   keywords: [
     "AWS Cloud Club",
     "AWS Cloud Club Pokhara",
