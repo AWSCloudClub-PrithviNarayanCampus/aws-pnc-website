@@ -23,9 +23,9 @@ export function TeamMember({
                 <Image
                     src={teamMember.image[0] ? teamMember.image[0] : "/logo.png"}
                     alt={teamMember.fullname}
-                    width={120}
-                    height={120}
-                    className="rounded-full mx-auto mb-4"
+                    width={220}
+                    height={220}
+                    className="mx-auto mb-4 h-56 w-full object-cover rounded-none"
                 />
                 <h3 className="font-semibold text-lg">{teamMember.fullname}</h3>
                 <p className="text-muted-foreground">{teamMember.role}</p>
