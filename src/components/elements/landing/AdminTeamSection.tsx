@@ -32,15 +32,16 @@ export async function AdminTeamSection() {
                     </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {teamMembers.map((member, index) => (
-                        <div key={index} className="relative">
+                    {teamMembers.map((member) => (
+                        <div key={member._id} className="flex flex-col gap-2">
                             <TeamMember teamMember={member} />
-                            <div className="absolute top-3 right-3 flex gap-2">
+                            <div className="flex justify-end gap-2">
                                 <Link
                                     href={`/admin/create-team?edit=${member._id}`}
-                                    className="rounded-md bg-background/90 p-2 shadow-sm hover:bg-background"
+                                    className="flex items-center gap-1 rounded-md border bg-background px-3 py-2 text-sm shadow-sm hover:bg-muted"
                                 >
                                     <Pencil className="h-4 w-4" />
+                                    Edit
                                 </Link>
                                 <form action={async () => {
                                     "use server";
@@ -48,9 +49,10 @@ export async function AdminTeamSection() {
                                 }}>
                                     <button
                                         type="submit"
-                                        className="rounded-md bg-background/90 p-2 shadow-sm hover:bg-background"
+                                        className="flex items-center gap-1 rounded-md border bg-background px-3 py-2 text-sm shadow-sm hover:bg-muted"
                                     >
                                         <Trash2 className="h-4 w-4" />
+                                        Delete
                                     </button>
                                 </form>
                             </div>
