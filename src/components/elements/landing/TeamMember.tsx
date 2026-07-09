@@ -25,7 +25,7 @@ export function TeamMember({
                     alt={teamMember.fullname}
                     width={220}
                     height={220}
-                    className="mx-auto mb-4 h-56 w-full object-cover rounded-none"
+                    className="mx-auto mb-4 h-56 w-auto max-w-full object-cover rounded-none"
                 />
                 <h3 className="font-semibold text-lg">{teamMember.fullname}</h3>
                 <p className="text-muted-foreground">{teamMember.role}</p>
