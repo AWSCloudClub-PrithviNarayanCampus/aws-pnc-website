@@ -2,8 +2,10 @@
 
 import TeamModel from "@/lib/models/team.model";
 import { connectToDb } from "@/lib/utils/connectDB";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const getMembers = async () => {
+    noStore();
     await connectToDb();
     try {
         const teamData = await TeamModel.find();
