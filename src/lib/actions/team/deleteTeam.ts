@@ -8,7 +8,11 @@ export const deleteTeam = async (teamId: string) => {
     await connectToDb();
 
     try {
-        await TeamModel.findByIdAndDelete(teamId);
+        const result = await TeamModel.findByIdAndDelete(teamId);
+        if (!result) {
+            return { success: false, message: "Member not found" };
+        }
+
         revalidatePath("/admin/team");
         revalidatePath("/");
         return { success: true };

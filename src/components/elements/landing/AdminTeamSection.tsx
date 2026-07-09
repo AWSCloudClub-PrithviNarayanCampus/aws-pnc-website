@@ -1,15 +1,9 @@
 import { getMembers } from "@/lib/actions/team/getMembers";
+import { deleteTeam } from "@/lib/actions/team/deleteTeam";
 import { TeamMember } from "./TeamMember"
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Pencil, Plus, Trash2 } from "lucide-react";
-import { deleteTeam } from "@/lib/actions/team/deleteTeam";
-import { revalidatePath } from "next/cache";
-
-async function handleDelete(teamId: string) {
-    "use server";
-    await deleteTeam(teamId);
-}
 
 export async function AdminTeamSection() {
     const response = await getMembers();
