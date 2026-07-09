@@ -15,21 +15,25 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import toast from "react-hot-toast"
 import { Upload, X } from "lucide-react"
 import { useUploadThing } from "@/lib/utils/uploadthing-client"
 import { TeamFormSchema } from "@/lib/validations/team.form.validation"
 import { createTeam } from "@/lib/actions/team/createTeam"
+import { updateTeam } from "@/lib/actions/team/updateTeam"
 
 export function CreateTeam() {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [files, setFiles] = useState<File[]>([])
     const [previewUrls, setPreviewUrls] = useState<string[]>([])
+    const [editingMember, setEditingMember] = useState<Team | null>(null)
     const fileInputRef = useRef<HTMLInputElement>(null)
     const { startUpload } = useUploadThing("imageUploader")
     const router = useRouter()
+    const searchParams = useSearchParams()
+    const editId = searchParams.get("edit")
     const form = useForm<z.infer<typeof TeamFormSchema>>({
         resolver: zodResolver(TeamFormSchema),
         defaultValues: {
@@ -47,6 +51,42 @@ export function CreateTeam() {
             github: "",
         },
     })
+
+    useEffect(() => {
+        const loadMember = async () => {
+            if (!editId) return;
+
+            try {
+                const response = await fetch(`/api/team/${editId}`);
+                if (!response.ok) return;
+                const data = await response.json();
+                if (data?.member) {
+                    setEditingMember(data.member);
+                    form.reset({
+                        email: data.member.email || "",
+                        number: data.member.number || "",
+                        address: data.member.address || "",
+                        fullname: data.member.fullname || "",
+                        role: data.member.role || "",
+                        description: data.member.description || "",
+                        order: data.member.order || "",
+                        linkedIn: data.member.linkedIn || "",
+                        facebook: data.member.facebook || "",
+                        instagram: data.member.instagram || "",
+                        twitter: data.member.twitter || "",
+                        github: data.member.github || "",
+                    });
+                    if (data.member.image?.length) {
+                        setPreviewUrls(data.member.image);
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to load member for editing", error);
+            }
+        };
+
+        loadMember();
+    }, [editId, form]);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newFiles = e.target.files
@@ -110,7 +150,7 @@ export function CreateTeam() {
             number: values.number,
             address: values.address,
             role: values.role,
-            image: uploadedImages,
+            image: uploadedImages.length ? uploadedImages : (editingMember?.image || []),
             description: values.description,
             order: values.order,
             linkedIn: values.linkedIn,
@@ -120,14 +160,19 @@ export function CreateTeam() {
             github: values.github
         }
 
-        const response = await createTeam({ teamData: teamMemberData })
+        let response;
+        if (editingMember?._id) {
+            response = await updateTeam(editingMember._id, teamMemberData)
+        } else {
+            response = await createTeam({ teamData: teamMemberData })
+        }
+
         if (response?.success) {
             form.reset()
             setFiles([])
             setPreviewUrls([])
-            toast.success("Book Listed successfully!..")
-        }
-        if (response?.success) {
+            setEditingMember(null)
+            toast.success(editingMember?._id ? "Member updated successfully" : "Member added successfully")
             router.push(`/admin/team`)
         }
     }
