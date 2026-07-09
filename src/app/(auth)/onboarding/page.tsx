@@ -14,13 +14,22 @@ const Page = async () => {
         email: session.user.email!,
         profileImage: session.user.image!,
     }
-    if (Admins.includes(session.user.email!)) {
+
+    const isAdmin = Admins.includes(session.user.email!)
+    if (isAdmin) {
         const res = await createUser({ userData: sessionData })
         if (res) redirect('/admin')
     }
+
     const data = await getUser(session.user.id)
-    const userInfoFromDb = data as User;
-    if (!userInfoFromDb) return <div>Loading...</div>
+    const userInfoFromDb = data as User
+
+    if (!userInfoFromDb || "message" in userInfoFromDb) {
+        await createUser({ userData: sessionData })
+    }
+
+    redirect('/')
+
     return (
         <div>
             Validating.....

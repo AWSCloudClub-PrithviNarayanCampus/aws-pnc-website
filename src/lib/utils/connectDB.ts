@@ -3,17 +3,27 @@ import mongoose from "mongoose";
 let isConnected = false;
 
 export const connectToDb = async () => {
-    mongoose.set('strictQuery', true);
+    mongoose.set("strictQuery", true);
 
-    if (!process.env.MONGODB_URL) return console.log("Mongodb url not found")
+    const mongoUrl = process.env.MONGODB_URL;
+    if (!mongoUrl) {
+        console.warn("MONGODB_URL is not set. Skipping MongoDB connection.");
+        return false;
+    }
 
-    if (isConnected) return console.log("already connected Connect");
+    if (isConnected && mongoose.connection.readyState === 1) {
+        console.log("Already connected to MongoDB");
+        return true;
+    }
 
     try {
-        await mongoose.connect(process.env.MONGODB_URL)
-        isConnected = true;
-        console.log("Connected to Mongo");
+        await mongoose.connect(mongoUrl);
+        isConnected = mongoose.connection.readyState === 1;
+        console.log("Connected to MongoDB", { readyState: mongoose.connection.readyState });
+        return true;
     } catch (error) {
-        console.log(error);
+        isConnected = false;
+        console.error("MongoDB connection error:", error);
+        return false;
     }
-}
+};

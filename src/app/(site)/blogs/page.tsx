@@ -9,7 +9,7 @@ import { getPublishedBlogs } from "@/lib/actions/blog/getPublishedBlogs"
 
 export default async function BlogListPage() {
     const response = await getPublishedBlogs()
-    const blogs = response.data as Blog[]
+    const blogs = (response?.data as Blog[]) ?? []
 
     return (
         <div className="min-h-screen bg-background">
@@ -21,6 +21,11 @@ export default async function BlogListPage() {
                     </p>
                 </div>
 
+                {blogs.length === 0 ? (
+                    <div className="rounded-lg border border-dashed p-8 text-center text-muted-foreground">
+                        No blogs available right now.
+                    </div>
+                ) : (
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     {blogs.map((blog) => (
                         <article key={blog.blogId} className="group">
@@ -64,6 +69,7 @@ export default async function BlogListPage() {
                         </article>
                     ))}
                 </div>
+                )}
             </div>
         </div>
     )

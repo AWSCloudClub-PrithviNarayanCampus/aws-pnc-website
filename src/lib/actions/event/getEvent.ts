@@ -4,7 +4,12 @@ import EventModel from "@/lib/models/events.model";
 import { connectToDb } from "@/lib/utils/connectDB";
 
 export const getEvent = async (eventId: string) => {
-    await connectToDb()
+    const connected = await connectToDb();
+
+    if (!connected) {
+        return { success: false, message: "Database unavailable" };
+    }
+
     try {
         const eventData = await EventModel.findById({ _id: eventId });
         if (!eventData) {
